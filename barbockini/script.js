@@ -25,18 +25,15 @@ function renderTasks() {
 
   tasks.forEach(task => {
     if (filter.value !== "all" && !task.text.includes(filter.value)) return;
-
     const div = document.createElement("div");
     div.className = "task";
     div.draggable = true;
     div.id = task.id;
     div.textContent = task.text;
-
     div.addEventListener("dragstart", e => {
       div.classList.add("dragging");
       e.dataTransfer.setData("text/plain", task.id);
     });
-
     div.addEventListener("dragend", () => {
       div.classList.remove("dragging");
     });
@@ -69,19 +66,16 @@ function renderTasks() {
       .querySelector(`[data-status="${task.status}"] .task-list`)
       .appendChild(div);
   });
-
   updateCount();
 }
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-
   const newTask = {
     id: Date.now().toString(),
     text: input.value,
     status: "todo"
   };
-
   tasks.push(newTask);
   saveTasks();
   renderTasks();
@@ -94,19 +88,15 @@ columns.forEach(column => {
     e.preventDefault();
     column.classList.add("drag-over");
   });
-
   column.addEventListener("dragleave", () => {
     column.classList.remove("drag-over");
   });
-
   column.addEventListener("drop", e => {
     e.preventDefault();
     column.classList.remove("drag-over");
-
     const id = e.dataTransfer.getData("text/plain");
     const task = tasks.find(t => t.id === id);
     task.status = column.dataset.status;
-
     saveTasks();
     renderTasks();
     showNotification("Статус задачи изменен");
@@ -114,5 +104,4 @@ columns.forEach(column => {
 });
 
 filter.addEventListener("change", renderTasks);
-
 renderTasks();
