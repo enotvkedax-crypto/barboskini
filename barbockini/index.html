@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Барбоскины — План дел</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>План дел семьи Барбоскиных</h1>
+  <p>Управление задачами: уроки, репетиции, проекты и важные дела.</p>
+</header>
+
+<section class="controls">
+  <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Добавить новое дело" required>
+    <button type="submit">Добавить</button>
+  </form>
+
+  <select id="filter">
+    <option value="all">Все задачи</option>
+    <option value="Лиза">Лиза</option>
+    <option value="Дружок">Дружок</option>
+    <option value="Роза">Роза</option>
+    <option value="Гена">Гена</option>
+  </select>
+</section>
+
+<div class="info">
+  <span id="taskCount">Задач: 0</span>
+  <div id="notification"></div>
+</div>
+
+<section class="board">
+  <div class="column" data-status="todo">
+    <h2>Запланировано</h2>
+    <div class="task-list"></div>
+  </div>
+
+  <div class="column" data-status="progress">
+    <h2>В процессе</h2>
+    <div class="task-list"></div>
+  </div>
+
+  <div class="column" data-status="review">
+    <h2>Проверка</h2>
+    <div class="task-list"></div>
+  </div>
+
+  <div class="column" data-status="done">
+    <h2>Выполнено</h2>
+    <div class="task-list"></div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
